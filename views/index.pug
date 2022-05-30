@@ -1,0 +1,35 @@
+html
+    head 
+        link(rel="stylesheet" href="style.css")
+    body
+        h1 Marvel API Documentation 
+        p A list of routes for the marvel API and their functions 
+        h3 GET '/movies'
+        p This GET route will display all currently released Marvel Movies in chronological order
+        p Route: http://localhost:1337/movies 
+        h5 Expected Output: 
+        p 
+            | [{ id: 1 Title: Captain America: The First Avenger Heroes: Captain America Villains: Red Skull },
+            | { id: 2 Title: Captain Marvel Heroes: Captain Marvel Villains: The Kree, Yon-Rogg, Supreme Intelligence }, 
+            | { id: 3 Title: Iron Man Heroes: Iron Man Villains: The Ten Rings, Obadiah Stane }
+            | ...]
+        h3 GET '/:hero'
+        p This GET route will display all of the movies that this hero has appeared in
+        p Route: http://localhost:1337/:hero where :hero = iron man
+        h5 Expected Output:
+        p [{ title: Iron Man }, { title: Iron Man 2 }, { title: Iron Man 3 }, ...]
+        h3 GET '/:title'
+        p This Get Route will display all of the info on this movie 
+        p Route: http://localhost:1337/:title where :title = Captain Marvel 
+        h5 Expected Output: 
+        p  [ { id: 2 Title: Captain Marvel Heroes: Captain Marvel Villains: The Kree, Yon-Rogg, Supreme Intelligence } ]
+        h3 POST '/newMovie'
+        p this POST route will add a new movie to the DB and display it
+        p Route: http://localhost:1337/newMovie
+        h5 Expected Output:
+        p [ { id: 29 Title Thor: Love and Thunder Heroes: Thor Odinson, Guardians of The Galaxy Villains: Gorr The God Butcher } ]
+        h3 DELETE '/:id'
+        p This DELETE route will delete the movie given by the id 
+        p Route: '/:id' where :id = 2
+        h5 Expected Output:
+        p 'Captain Marvel has been deleted'
