@@ -14,7 +14,6 @@ module.exports = {
       { heroAlias: 'Nick Fury', heroName: 'Nicholas J. Fury', status: 'Alive' },
       { heroAlias: 'War Machine', heroName: 'James "Rhodey" Rhodes', status: 'Alive' },
       { heroAlias: 'Bucky', heroName: 'James Buchanan "Bucky" Barnes', status: 'Alive' },
-      { heroAlias: '', heroName: '', status: '' },
     ])
 
     await queryInterface.bulkInsert('movies', [
