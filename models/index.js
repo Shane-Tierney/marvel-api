@@ -11,7 +11,7 @@ const MoviesVillainsModel = require('./moviesVillains')
 const environment = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
 const { username, password, database, host, dialect } = allConfigs[environment]
 
-const connection = new Sequelize(database, username, password, { host, dialect })
+const connection = new Sequelize(database, username, password, { host, dialect: 'mysql' })
 
 const Heroes = HeroesModel(connection, Sequelize)
 const Movies = MoviesModel(connection, Sequelize)

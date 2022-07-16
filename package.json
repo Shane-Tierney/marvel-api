@@ -27,11 +27,15 @@
   },
   "homepage": "https://github.com/Shane-Tierney/marvel-api#readme",
   "devDependencies": {
+    "chai": "^4.3.6",
     "concurrently": "^7.2.2",
     "env-cmd": "^10.1.0",
     "eslint": "^8.16.0",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.16",
-    "pug-lint": "^2.6.0"
+    "pug-lint": "^2.6.0",
+    "sinon": "^14.0.0",
+    "sinon-chai": "^3.7.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
