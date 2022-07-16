@@ -9,9 +9,9 @@ const MoviesHeroesModel = require('./moviesHeroes')
 const MoviesVillainsModel = require('./moviesVillains')
 
 const environment = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
-const { username, password, databse, host, dialect } = allConfigs[environment]
+const { username, password, database, host, dialect } = allConfigs[environment]
 
-const connection = new Sequelize(databse, username, password, { host, dialect })
+const connection = new Sequelize(database, username, password, { host, dialect })
 
 const Heroes = HeroesModel(connection, Sequelize)
 const Movies = MoviesModel(connection, Sequelize)
@@ -24,3 +24,12 @@ Movies.belongsToMany(Heroes, { through: MoviesHeroes })
 
 Villains.belongsToMany(Movies, { through: MoviesVillains })
 Movies.belongsToMany(Villains, { through: MoviesVillains })
+
+module.exports = {
+  Heroes,
+  Movies,
+  Villains,
+  MoviesHeroes,
+  MoviesVillains,
+  Sequelize
+}

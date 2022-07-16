@@ -16,11 +16,11 @@ const getAllHeroesWithMovies = async (request, response) => {
   }
 }
 
-const getAllHeroesWithMoviesAndVillainsByIdOrAliasOrName = async (request, response) => {
+const getAllHeroesWithMoviesByIdOrAliasOrName = async (request, response) => {
   try {
     const { search } = request.params
 
-    const hero = await models.Heroes.findOne({
+    const hero = await models.Heroes.findAll({
       attributes: ['id', 'heroAlias', 'heroName', 'status'],
       where: {
         [models.Sequelize.Op.or]: [
@@ -32,9 +32,6 @@ const getAllHeroesWithMoviesAndVillainsByIdOrAliasOrName = async (request, respo
       include: [{
         model: models.Movies,
         attributes: ['id', 'title', 'phase', 'releaseDate']
-      }, {
-        model: models.Villains,
-        attributes: ['id', 'villainAlias', 'villainName', 'status']
       }]
     })
 
@@ -46,4 +43,4 @@ const getAllHeroesWithMoviesAndVillainsByIdOrAliasOrName = async (request, respo
   }
 }
 
-module.exports = { getAllHeroesWithMovies, getAllHeroesWithMoviesAndVillainsByIdOrAliasOrName }
+module.exports = { getAllHeroesWithMovies, getAllHeroesWithMoviesByIdOrAliasOrName }

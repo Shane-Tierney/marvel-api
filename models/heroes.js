@@ -1,6 +1,6 @@
 const Heroes = (connection, Sequelize) => {
   return connection.define('heroes', {
-    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true },
     heroAlias: { type: Sequelize.STRING, allowNull: false },
     heroName: { type: Sequelize.STRING, allowNull: false },
     status: { type: Sequelize.ENUM('Alive', 'Deceased'), allowNull: false },

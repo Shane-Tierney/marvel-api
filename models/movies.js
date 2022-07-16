@@ -1,6 +1,6 @@
 const Movies = (connection, Sequelize) => {
-  return connection.define('heroes', {
-    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  return connection.define('movies', {
+    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true },
     title: { type: Sequelize.STRING, allowNull: false },
     phase: { type: Sequelize.INTEGER, allowNull: false },
     chronologicalOrder: { type: Sequelize.INTEGER, allowNull: false },

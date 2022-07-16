@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('heroes', {
-      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true },
       heroAlias: { type: Sequelize.STRING, allowNull: false },
       heroName: { type: Sequelize.STRING, allowNull: false },
       status: { type: Sequelize.ENUM('Alive', 'Deceased'), allowNull: false },
@@ -17,7 +17,7 @@ module.exports = {
     })
 
     await queryInterface.createTable('movies', {
-      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true },
       title: { type: Sequelize.STRING, allowNull: false },
       phase: { type: Sequelize.INTEGER, allowNull: false },
       chronologicalOrder: { type: Sequelize.INTEGER, allowNull: false },
@@ -32,7 +32,7 @@ module.exports = {
     })
 
     await queryInterface.createTable('villains', {
-      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true },
       villainAlias: { type: Sequelize.STRING, allowNull: false },
       villainName: { type: Sequelize.STRING, allowNull: false },
       status: { type: Sequelize.ENUM('Alive', 'Deceased'), allowNull: false },
@@ -46,6 +46,7 @@ module.exports = {
     })
 
     await queryInterface.createTable('moviesHeroes', {
+      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true },
       heroId: { type: Sequelize.INTEGER, references: { model: 'Heroes', key: 'id' } },
       movieId: { type: Sequelize.INTEGER, references: { model: 'Movies', key: 'id' } },
       createdAt: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'), },
@@ -58,6 +59,7 @@ module.exports = {
     })
 
     return queryInterface.createTable('moviesVillains', {
+      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true },
       villainId: { type: Sequelize.INTEGER, references: { model: 'Villains', key: 'id' } },
       movieId: { type: Sequelize.INTEGER, references: { model: 'Movies', key: 'id' } },
       createdAt: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'), },
