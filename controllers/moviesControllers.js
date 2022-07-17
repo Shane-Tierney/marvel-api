@@ -47,6 +47,30 @@ const getMovieWithHeroesAndVillainsByTitle = async (request, response) => {
   }
 }
 
+const getMovieWithHeroesAndVillainsByID = async (request, response) => {
+  try {
+    const { id } = request.params
+
+    const movie = await models.Movies.findAll({
+      attributes: ['id', 'title', 'phase', 'releaseDate'],
+      where: { id: id },
+      include: [{
+        model: models.Heroes,
+        attributes: ['id', 'heroAlias', 'heroName', 'status']
+      }, {
+        model: models.Villains,
+        attributes: ['id', 'villainAlias', 'villainName', 'status']
+      }]
+    })
+
+    return movie ? response.send(movie) : response.sendStatus(404)
+  } catch (error) {
+    console.log(error)
+
+    return response.status(500).send('Unable to retrieve Movie, please try again')
+  }
+}
+
 const getAllJustMovies = async (request, response) => {
   try {
     const movies = await models.Movies.findAll()
@@ -165,4 +189,4 @@ const saveNewMovieWithHeroesAndVillains = async (request, response) => {
   }
 }
 
-module.exports = { getAllMoviesWithHeroesAndVillains, getMovieWithHeroesAndVillainsByTitle, getAllJustMovies, saveNewMovieWithHeroesAndVillains }
+module.exports = { getAllMoviesWithHeroesAndVillains, getMovieWithHeroesAndVillainsByTitle, getAllJustMovies, saveNewMovieWithHeroesAndVillains, getMovieWithHeroesAndVillainsByID }

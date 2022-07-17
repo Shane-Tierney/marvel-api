@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const express = require('express')
 const { getAllHeroesWithMovies, getAllHeroesWithMoviesByIdOrAliasOrName } = require('./controllers/heroesControllers')
-const { getAllMoviesWithHeroesAndVillains, getMovieWithHeroesAndVillainsByTitle, getAllJustMovies, saveNewMovieWithHeroesAndVillains } = require('./controllers/moviesControllers')
+const { getAllMoviesWithHeroesAndVillains, getMovieWithHeroesAndVillainsByTitle, getAllJustMovies, saveNewMovieWithHeroesAndVillains, getMovieWithHeroesAndVillainsByID } = require('./controllers/moviesControllers')
 const { getAllVillainsWithMovies, getAllVillainsWithMoviesByIdOrAliasOrName } = require('./controllers/villainsControllers')
 const { indexRender, isRunning, catchAll } = require('./controllers/marvel')
 
@@ -14,7 +14,8 @@ app.get('/api/documentation', indexRender)
 
 app.get('/api/movies', getAllMoviesWithHeroesAndVillains)
 app.get('/api/movies/movies', getAllJustMovies)
-app.get('/api/movies/:title', getMovieWithHeroesAndVillainsByTitle)
+app.get('/api/movies/:id', getMovieWithHeroesAndVillainsByID)
+app.get('/api/movies/search/:title', getMovieWithHeroesAndVillainsByTitle)
 
 app.get('/api/heroes', getAllHeroesWithMovies)
 app.get('/api/heroes/:search', getAllHeroesWithMoviesByIdOrAliasOrName)
