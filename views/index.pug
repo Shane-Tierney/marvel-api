@@ -1,0 +1,475 @@
+html
+    head 
+        link(rel="stylesheet" href="style.css")
+    body
+        h1 Marvel API Documentation 
+        p A list of routes for the marvel API and their functions 
+        h3 GET '/api/movies'
+        p This GET route will display all Marvel Movies with a list of heroes and villains that appear in them
+        p Route: http://localhost:1337/api/movies 
+        h5 Expected Output: 
+        p 
+            | [{
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "chronologicalOrder": 3,
+            | "releaseDate": "2008-05-02",
+            | "heroes": [
+            | {
+            | "id": 1,
+            | "heroAlias": "Iron Man",
+            | "heroName": "Tony Stark",
+            | "status": "Deceased",
+            | "moviesHeroes": {
+            | "id": 1,
+            | "heroId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 7,
+            | "heroAlias": "Nick Fury",
+            | "heroName": "Nicholas J. Fury",
+            | "status": "Alive",
+            | "moviesHeroes": {
+            | "id": 13,
+            | "heroId": 7,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 8,
+            | "heroAlias": "War Machine",
+            | "heroName": "James \"Rhodey\" Rhodes",
+            | "status": "Alive",
+            | "moviesHeroes": {
+            | "id": 18,
+            | "heroId": 8,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+            | ],
+            | "villains": [
+            | {
+            | "id": 1,
+            | "villainAlias": "Ten Rings",
+            | "villainName": "The Ten Rings",
+            | "status": "Alive",
+            | "moviesVillains": {
+            | "id": 1,
+            | "villainId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 2,
+            | "villainAlias": "Iron Monger",
+            | "villainName": "Obadiah Stane",
+            | "status": "Deceased",
+            | "moviesVillains": {
+            | "id": 2,
+            | "villainId": 2,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+            | ]
+            | }...]
+        br
+        br
+        h3 GET '/api/movies/:id' where title = Iron man
+        p This GET route will display all currently released Marvel Movies with a list of heroes and villains that appear in them by the movie's ID
+        p Route: http://localhost:1337/api/movies/1 
+        h5 Expected Output: 
+        p 
+            | [{
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "chronologicalOrder": 3,
+            | "releaseDate": "2008-05-02",
+            | "heroes": [
+            | {
+            | "id": 1,
+            | "heroAlias": "Iron Man",
+            | "heroName": "Tony Stark",
+            | "status": "Deceased",
+            | "moviesHeroes": {
+            | "id": 1,
+            | "heroId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 7,
+            | "heroAlias": "Nick Fury",
+            | "heroName": "Nicholas J. Fury",
+            | "status": "Alive",
+            | "moviesHeroes": {
+            | "id": 13,
+            | "heroId": 7,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 8,
+            | "heroAlias": "War Machine",
+            | "heroName": "James \"Rhodey\" Rhodes",
+            | "status": "Alive",
+            | "moviesHeroes": {
+            | "id": 18,
+            | "heroId": 8,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+            | ],
+            | "villains": [
+            | {
+            | "id": 1,
+            | "villainAlias": "Ten Rings",
+            | "villainName": "The Ten Rings",
+            | "status": "Alive",
+            | "moviesVillains": {
+            | "id": 1,
+            | "villainId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 2,
+            | "villainAlias": "Iron Monger",
+            | "villainName": "Obadiah Stane",
+            | "status": "Deceased",
+            | "moviesVillains": {
+            | "id": 2,
+            | "villainId": 2,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+            | ]
+            | }...]
+        br
+        br
+        h3 GET '/api/movies/movies'
+        p This GET route will display all currently released Marvel Movies
+        p Route: http://localhost:1337/api/movies/movies 
+        h5 Expected Output: 
+        p 
+            |[
+            | {
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "chronologicalOrder": 3,
+            | "releaseDate": "2008-05-02",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | },
+            | {
+            | "id": 2,
+            | "title": "Iron Man 2",
+            | "phase": 1,
+            | "chronologicalOrder": 4,
+            | "releaseDate": "2010-05-07",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | },
+            | {
+            | "id": 3,
+            | "title": "Thor",
+            | "phase": 1,
+            | "chronologicalOrder": 5,
+            | "releaseDate": "2011-05-06",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | },
+            | {
+            | "id": 4,
+            | "title": "Captain America: The First Avenger",
+            | "phase": 1,
+            | "chronologicalOrder": 1,
+            | "releaseDate": "2011-07-22",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | },
+        br
+        br
+        h3 GET '/api/movies/search/:title'
+        p This GET route will display all currently released Marvel Movies with heroes and villains that fuzzy-match the title
+        p Route: http://localhost:1337/api/movies/search/i 
+        h5 Expected Output: 
+        p 
+            |[
+            | {
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "chronologicalOrder": 3,
+            | "releaseDate": "2008-05-02",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | },
+            | {
+            | "id": 2,
+            | "title": "Iron Man 2",
+            | "phase": 1,
+            | "chronologicalOrder": 4,
+            | "releaseDate": "2010-05-07",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | },
+            | {
+            | "id": 3,
+            | "title": "Thor",
+            | "phase": 1,
+            | "chronologicalOrder": 5,
+            | "releaseDate": "2011-05-06",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | },
+            | {
+            | "id": 4,
+            | "title": "Captain America: The First Avenger",
+            | "phase": 1,
+            | "chronologicalOrder": 1,
+            | "releaseDate": "2011-07-22",
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }, ...]
+        br
+        br
+        h3 GET '/api/heroes/:search'
+        p This GET route will display all of the movies that this hero has appeared in
+        p Route: http://localhost:1337/:hero where :hero = iron man
+        h5 Expected Output:
+        p 
+            | {
+            | "id": 1,
+            | "heroAlias": "Iron Man",
+            | "heroName": "Tony Stark",
+            | "status": "Deceased",
+            | "movies": [
+            | {
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "releaseDate": "2008-05-02",
+            | "moviesHeroes": {
+            | "id": 1,
+            | "heroId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 2,
+            | "title": "Iron Man 2",
+            | "phase": 1,
+            | "releaseDate": "2010-05-07",
+            | "moviesHeroes": {
+            | "id": 2,
+            | "heroId": 1,
+            | "movieId": 2,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 5,
+            | "title": "The Avengers",
+            | "phase": 1,
+            | "releaseDate": "2012-05-04",
+            | "moviesHeroes": {
+            | "id": 3,
+            | "heroId": 1,
+            | "movieId": 5,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+        br
+        br
+        h3 GET '/api/heroes'
+        p This Get Route will display all of the heroes with the movies they appear in 
+        p Route: http://localhost:1337/api/heroes
+        h5 Expected Output: 
+        p   
+            | [             
+            | {
+            | "id": 1,
+            | "heroAlias": "Iron Man",
+            | "heroName": "Tony Stark",
+            | "status": "Deceased",
+            | "movies": [
+            | {
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "releaseDate": "2008-05-02",
+            | "moviesHeroes": {
+            | "id": 1,
+            | "heroId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 2,
+            | "title": "Iron Man 2",
+            | "phase": 1,
+            | "releaseDate": "2010-05-07",
+            | "moviesHeroes": {
+            | "id": 2,
+            | "heroId": 1,
+            | "movieId": 2,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | },
+            | {
+            | "id": 5,
+            | "title": "The Avengers",
+            | "phase": 1,
+            | "releaseDate": "2012-05-04",
+            | "moviesHeroes": {
+            | "id": 3,
+            | "heroId": 1,
+            | "movieId": 5,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }, ... ]
+        br
+        br
+        h3 GET '/api/villains'
+        p This Get Route will display all of the villains with the movies they appear in 
+        p Route: http://localhost:1337/api/villains
+        h5 Expected Output: 
+        p   
+            | [
+            | {
+            | "id": 1,
+            | "villainAlias": "Ten Rings",
+            | "villainName": "The Ten Rings",
+            | "status": "Alive",
+            | "movies": [
+            | {
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "releaseDate": "2008-05-02",
+            | "moviesVillains": {
+            | "id": 1,
+            | "villainId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+            | ]
+            | },
+            | {
+            | "id": 2,
+            | "villainAlias": "Iron Monger",
+            | "villainName": "Obadiah Stane",
+            | "status": "Deceased",
+            | "movies": [
+            | {
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "releaseDate": "2008-05-02",
+            | "moviesVillains": {
+            | "id": 2,
+            | "villainId": 2,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+            | ]
+            | }
+        br
+        br
+        h3 GET '/api/villains/:search'
+        p This Get Route will display all of the villains with the movies they appear in by fuzzy-matched name or alias
+        p Route: http://localhost:1337/api/villains/ten 
+        h5 Expected Output: 
+        p   
+            | [
+            | {
+            | "id": 1,
+            | "villainAlias": "Ten Rings",
+            | "villainName": "The Ten Rings",
+            | "status": "Alive",
+            | "movies": [
+            | {
+            | "id": 1,
+            | "title": "Iron Man",
+            | "phase": 1,
+            | "releaseDate": "2008-05-02",
+            | "moviesVillains": {
+            | "id": 1,
+            | "villainId": 1,
+            | "movieId": 1,
+            | "createdAt": "2022-07-16T18:19:00.000Z",
+            | "updatedAt": "2022-07-16T18:19:00.000Z",
+            | "deletedAt": null
+            | }
+            | }
+            | ]
+        br
+        br
+        h3 POST '/api/movies'
+        p this POST route will add a new movie with hero and villain relations to the DB and display it
+        p Route: http://localhost:1337/movies
+        h5 Expected Output:
+        p An object holding the new movie with its heroes and its villains
