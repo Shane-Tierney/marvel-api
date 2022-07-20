@@ -1,13 +1,15 @@
+import { Grid } from '@mantine/core'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import MovieCard from '../MovieCard/MovieCard'
 
 const MoviesList = (props) => {
     const { movies } = props
 
     return (
-        <ul>
-            { movies.map(movie => <li key={movie.id}><NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink></li>) }
-        </ul>
+        <Grid gutter={60} style={{paddingTop: '60px'}}>
+            { movies.map(movie => <MovieCard movie={movie}/>) }
+        </Grid>
     )
 }
 

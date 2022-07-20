@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 const models = require('../models')
@@ -12,7 +13,8 @@ const getAllMoviesWithHeroesAndVillains = async (request, response) => {
       }, {
         model: models.Villains,
         attributes: ['id', 'villainAlias', 'villainName', 'status']
-      }]
+      }],
+      order: [['chronologicalOrder', 'ASC']]
     })
 
     return movies ? response.send(movies) : response.sendStatus(404)
@@ -51,8 +53,8 @@ const getMovieWithHeroesAndVillainsByID = async (request, response) => {
   try {
     const { id } = request.params
 
-    const movie = await models.Movies.findAll({
-      attributes: ['id', 'title', 'phase', 'releaseDate'],
+    const movie = await models.Movies.findOne({
+      attributes: ['id', 'title', 'phase', 'chronologicalOrder', 'releaseDate'],
       where: { id: id },
       include: [{
         model: models.Heroes,
